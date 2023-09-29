@@ -1,9 +1,6 @@
 package es.qabit.crypto.web.rest;
 
 import es.qabit.crypto.repository.WalletRepository;
-import es.qabit.crypto.security.AuthoritiesConstants;
-import es.qabit.crypto.security.SecurityUtils;
-import es.qabit.crypto.service.UserService;
 import es.qabit.crypto.service.WalletQueryService;
 import es.qabit.crypto.service.WalletService;
 import es.qabit.crypto.service.criteria.WalletCriteria;
@@ -25,7 +22,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import tech.jhipster.service.filter.LongFilter;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.PaginationUtil;
 import tech.jhipster.web.util.ResponseUtil;
@@ -50,18 +46,10 @@ public class WalletResource {
 
     private final WalletQueryService walletQueryService;
 
-    private final UserService userService;
-
-    public WalletResource(
-        WalletService walletService,
-        WalletRepository walletRepository,
-        WalletQueryService walletQueryService,
-        UserService userService
-    ) {
+    public WalletResource(WalletService walletService, WalletRepository walletRepository, WalletQueryService walletQueryService) {
         this.walletService = walletService;
         this.walletRepository = walletRepository;
         this.walletQueryService = walletQueryService;
-        this.userService = userService;
     }
 
     /**
@@ -167,13 +155,6 @@ public class WalletResource {
         @org.springdoc.core.annotations.ParameterObject Pageable pageable
     ) {
         log.debug("REST request to get Wallets by criteria: {}", criteria);
-
-        if (SecurityUtils.hasCurrentUserOnlyThisAuthorities(AuthoritiesConstants.USER)) {
-            SecurityUtils
-                .getCurrentUserLogin()
-                .flatMap(userService::getUserWithAuthoritiesByLogin)
-                .ifPresent(userId -> criteria.setUserId((LongFilter) new LongFilter().setEquals(userId.getId())));
-        }
 
         Page<WalletDTO> page = walletQueryService.findByCriteria(criteria, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);

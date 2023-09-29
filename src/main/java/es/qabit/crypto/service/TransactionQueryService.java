@@ -90,8 +90,8 @@ public class TransactionQueryService extends QueryService<Transaction> {
             if (criteria.getId() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getId(), Transaction_.id));
             }
-            if (criteria.getAmount() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getAmount(), Transaction_.amount));
+            if (criteria.getBalance() != null) {
+                specification = specification.and(buildRangeSpecification(criteria.getBalance(), Transaction_.balance));
             }
             if (criteria.getDate() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getDate(), Transaction_.date));

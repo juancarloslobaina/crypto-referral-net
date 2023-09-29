@@ -1,11 +1,8 @@
 package es.qabit.crypto.web.rest;
 
 import es.qabit.crypto.repository.TransactionRepository;
-import es.qabit.crypto.security.AuthoritiesConstants;
-import es.qabit.crypto.security.SecurityUtils;
 import es.qabit.crypto.service.TransactionQueryService;
 import es.qabit.crypto.service.TransactionService;
-import es.qabit.crypto.service.UserService;
 import es.qabit.crypto.service.criteria.TransactionCriteria;
 import es.qabit.crypto.service.dto.TransactionDTO;
 import es.qabit.crypto.web.rest.errors.BadRequestAlertException;
@@ -25,7 +22,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import tech.jhipster.service.filter.LongFilter;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.PaginationUtil;
 import tech.jhipster.web.util.ResponseUtil;
@@ -50,18 +46,14 @@ public class TransactionResource {
 
     private final TransactionQueryService transactionQueryService;
 
-    private final UserService userService;
-
     public TransactionResource(
         TransactionService transactionService,
         TransactionRepository transactionRepository,
-        TransactionQueryService transactionQueryService,
-        UserService userService
+        TransactionQueryService transactionQueryService
     ) {
         this.transactionService = transactionService;
         this.transactionRepository = transactionRepository;
         this.transactionQueryService = transactionQueryService;
-        this.userService = userService;
     }
 
     /**
@@ -167,13 +159,6 @@ public class TransactionResource {
         @org.springdoc.core.annotations.ParameterObject Pageable pageable
     ) {
         log.debug("REST request to get Transactions by criteria: {}", criteria);
-
-        if (SecurityUtils.hasCurrentUserOnlyThisAuthorities(AuthoritiesConstants.USER)) {
-            SecurityUtils
-                .getCurrentUserLogin()
-                .flatMap(userService::getUserWithAuthoritiesByLogin)
-                .ifPresent(userId -> criteria.setUserFromId((LongFilter) new LongFilter().setEquals(userId.getId())));
-        }
 
         Page<TransactionDTO> page = transactionQueryService.findByCriteria(criteria, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);

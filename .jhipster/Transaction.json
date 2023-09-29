@@ -5,7 +5,7 @@
   "entityTableName": "transaction",
   "fields": [
     {
-      "fieldName": "amount",
+      "fieldName": "balance",
       "fieldType": "BigDecimal"
     },
     {

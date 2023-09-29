@@ -15,7 +15,7 @@ public class WalletDTO implements Serializable {
 
     private String address;
 
-    private BigDecimal amount;
+    private BigDecimal balance;
 
     private UserDTO user;
 
@@ -37,12 +37,12 @@ public class WalletDTO implements Serializable {
         this.address = address;
     }
 
-    public BigDecimal getAmount() {
-        return amount;
+    public BigDecimal getBalance() {
+        return balance;
     }
 
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
     }
 
     public UserDTO getUser() {
@@ -88,7 +88,7 @@ public class WalletDTO implements Serializable {
         return "WalletDTO{" +
             "id=" + getId() +
             ", address='" + getAddress() + "'" +
-            ", amount=" + getAmount() +
+            ", balance=" + getBalance() +
             ", user=" + getUser() +
             ", cryto=" + getCryto() +
             "}";

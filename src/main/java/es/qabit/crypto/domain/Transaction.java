@@ -26,8 +26,8 @@ public class Transaction implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "amount", precision = 21, scale = 2)
-    private BigDecimal amount;
+    @Column(name = "balance", precision = 21, scale = 2)
+    private BigDecimal balance;
 
     @Column(name = "date")
     private Instant date;
@@ -63,17 +63,17 @@ public class Transaction implements Serializable {
         this.id = id;
     }
 
-    public BigDecimal getAmount() {
-        return this.amount;
+    public BigDecimal getBalance() {
+        return this.balance;
     }
 
-    public Transaction amount(BigDecimal amount) {
-        this.setAmount(amount);
+    public Transaction balance(BigDecimal balance) {
+        this.setBalance(balance);
         return this;
     }
 
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
     }
 
     public Instant getDate() {
@@ -165,7 +165,7 @@ public class Transaction implements Serializable {
     public String toString() {
         return "Transaction{" +
             "id=" + getId() +
-            ", amount=" + getAmount() +
+            ", balance=" + getBalance() +
             ", date='" + getDate() + "'" +
             ", status='" + getStatus() + "'" +
             "}";

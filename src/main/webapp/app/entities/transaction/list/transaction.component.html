@@ -40,9 +40,9 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="amount">
+          <th scope="col" jhiSortBy="balance">
             <div class="d-flex">
-              <span jhiTranslate="cryptoApp.transaction.amount">Amount</span>
+              <span jhiTranslate="cryptoApp.transaction.balance">Balance</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -84,7 +84,7 @@
           <td>
             <a [routerLink]="['/transaction', transaction.id, 'view']">{{ transaction.id }}</a>
           </td>
-          <td>{{ transaction.amount }}</td>
+          <td>{{ transaction.balance }}</td>
           <td>{{ transaction.date | formatMediumDatetime }}</td>
           <td jhiTranslate="{{ 'cryptoApp.TransactionStatus.' + transaction.status }}">{{ transaction.status }}</td>
           <td>

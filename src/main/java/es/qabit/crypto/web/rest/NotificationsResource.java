@@ -1,11 +1,8 @@
 package es.qabit.crypto.web.rest;
 
 import es.qabit.crypto.repository.NotificationsRepository;
-import es.qabit.crypto.security.AuthoritiesConstants;
-import es.qabit.crypto.security.SecurityUtils;
 import es.qabit.crypto.service.NotificationsQueryService;
 import es.qabit.crypto.service.NotificationsService;
-import es.qabit.crypto.service.UserService;
 import es.qabit.crypto.service.criteria.NotificationsCriteria;
 import es.qabit.crypto.service.dto.NotificationsDTO;
 import es.qabit.crypto.web.rest.errors.BadRequestAlertException;
@@ -25,7 +22,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import tech.jhipster.service.filter.LongFilter;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.PaginationUtil;
 import tech.jhipster.web.util.ResponseUtil;
@@ -50,18 +46,14 @@ public class NotificationsResource {
 
     private final NotificationsQueryService notificationsQueryService;
 
-    private final UserService userService;
-
     public NotificationsResource(
         NotificationsService notificationsService,
         NotificationsRepository notificationsRepository,
-        NotificationsQueryService notificationsQueryService,
-        UserService userService
+        NotificationsQueryService notificationsQueryService
     ) {
         this.notificationsService = notificationsService;
         this.notificationsRepository = notificationsRepository;
         this.notificationsQueryService = notificationsQueryService;
-        this.userService = userService;
     }
 
     /**
@@ -168,13 +160,6 @@ public class NotificationsResource {
         @org.springdoc.core.annotations.ParameterObject Pageable pageable
     ) {
         log.debug("REST request to get Notifications by criteria: {}", criteria);
-
-        if (SecurityUtils.hasCurrentUserOnlyThisAuthorities(AuthoritiesConstants.USER)) {
-            SecurityUtils
-                .getCurrentUserLogin()
-                .flatMap(userService::getUserWithAuthoritiesByLogin)
-                .ifPresent(userId -> criteria.setUserId((LongFilter) new LongFilter().setEquals(userId.getId())));
-        }
 
         Page<NotificationsDTO> page = notificationsQueryService.findByCriteria(criteria, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);

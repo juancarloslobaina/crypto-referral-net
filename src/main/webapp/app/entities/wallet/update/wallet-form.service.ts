@@ -19,7 +19,7 @@ type WalletFormDefaults = Pick<NewWallet, 'id'>;
 type WalletFormGroupContent = {
   id: FormControl<IWallet['id'] | NewWallet['id']>;
   address: FormControl<IWallet['address']>;
-  amount: FormControl<IWallet['amount']>;
+  balance: FormControl<IWallet['balance']>;
   user: FormControl<IWallet['user']>;
   cryto: FormControl<IWallet['cryto']>;
 };
@@ -42,7 +42,7 @@ export class WalletFormService {
         },
       ),
       address: new FormControl(walletRawValue.address),
-      amount: new FormControl(walletRawValue.amount),
+      balance: new FormControl(walletRawValue.balance),
       user: new FormControl(walletRawValue.user, {
         validators: [Validators.required],
       }),

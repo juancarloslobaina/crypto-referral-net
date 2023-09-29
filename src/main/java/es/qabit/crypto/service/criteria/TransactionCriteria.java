@@ -41,7 +41,7 @@ public class TransactionCriteria implements Serializable, Criteria {
 
     private LongFilter id;
 
-    private BigDecimalFilter amount;
+    private BigDecimalFilter balance;
 
     private InstantFilter date;
 
@@ -59,7 +59,7 @@ public class TransactionCriteria implements Serializable, Criteria {
 
     public TransactionCriteria(TransactionCriteria other) {
         this.id = other.id == null ? null : other.id.copy();
-        this.amount = other.amount == null ? null : other.amount.copy();
+        this.balance = other.balance == null ? null : other.balance.copy();
         this.date = other.date == null ? null : other.date.copy();
         this.status = other.status == null ? null : other.status.copy();
         this.userFromId = other.userFromId == null ? null : other.userFromId.copy();
@@ -88,19 +88,19 @@ public class TransactionCriteria implements Serializable, Criteria {
         this.id = id;
     }
 
-    public BigDecimalFilter getAmount() {
-        return amount;
+    public BigDecimalFilter getBalance() {
+        return balance;
     }
 
-    public BigDecimalFilter amount() {
-        if (amount == null) {
-            amount = new BigDecimalFilter();
+    public BigDecimalFilter balance() {
+        if (balance == null) {
+            balance = new BigDecimalFilter();
         }
-        return amount;
+        return balance;
     }
 
-    public void setAmount(BigDecimalFilter amount) {
-        this.amount = amount;
+    public void setBalance(BigDecimalFilter balance) {
+        this.balance = balance;
     }
 
     public InstantFilter getDate() {
@@ -197,7 +197,7 @@ public class TransactionCriteria implements Serializable, Criteria {
         final TransactionCriteria that = (TransactionCriteria) o;
         return (
             Objects.equals(id, that.id) &&
-            Objects.equals(amount, that.amount) &&
+            Objects.equals(balance, that.balance) &&
             Objects.equals(date, that.date) &&
             Objects.equals(status, that.status) &&
             Objects.equals(userFromId, that.userFromId) &&
@@ -209,7 +209,7 @@ public class TransactionCriteria implements Serializable, Criteria {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, amount, date, status, userFromId, userToId, cryptoId, distinct);
+        return Objects.hash(id, balance, date, status, userFromId, userToId, cryptoId, distinct);
     }
 
     // prettier-ignore
@@ -217,7 +217,7 @@ public class TransactionCriteria implements Serializable, Criteria {
     public String toString() {
         return "TransactionCriteria{" +
             (id != null ? "id=" + id + ", " : "") +
-            (amount != null ? "amount=" + amount + ", " : "") +
+            (balance != null ? "balance=" + balance + ", " : "") +
             (date != null ? "date=" + date + ", " : "") +
             (status != null ? "status=" + status + ", " : "") +
             (userFromId != null ? "userFromId=" + userFromId + ", " : "") +

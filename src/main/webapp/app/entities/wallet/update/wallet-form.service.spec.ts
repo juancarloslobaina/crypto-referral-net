@@ -21,7 +21,7 @@ describe('Wallet Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             address: expect.any(Object),
-            amount: expect.any(Object),
+            balance: expect.any(Object),
             user: expect.any(Object),
             cryto: expect.any(Object),
           }),
@@ -35,7 +35,7 @@ describe('Wallet Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             address: expect.any(Object),
-            amount: expect.any(Object),
+            balance: expect.any(Object),
             user: expect.any(Object),
             cryto: expect.any(Object),
           }),

@@ -12,7 +12,7 @@ export const sampleWithPartialData: ITransaction = {
 
 export const sampleWithFullData: ITransaction = {
   id: 16210,
-  amount: 10707.76,
+  balance: 10707.76,
   date: dayjs('2023-09-29T08:24'),
   status: 'CANCELADA',
 };

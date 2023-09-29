@@ -27,8 +27,8 @@ public class Wallet implements Serializable {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "amount", precision = 21, scale = 2)
-    private BigDecimal amount;
+    @Column(name = "balance", precision = 21, scale = 2)
+    private BigDecimal balance;
 
     @ManyToOne(optional = false)
     @NotNull
@@ -66,17 +66,17 @@ public class Wallet implements Serializable {
         this.address = address;
     }
 
-    public BigDecimal getAmount() {
-        return this.amount;
+    public BigDecimal getBalance() {
+        return this.balance;
     }
 
-    public Wallet amount(BigDecimal amount) {
-        this.setAmount(amount);
+    public Wallet balance(BigDecimal balance) {
+        this.setBalance(balance);
         return this;
     }
 
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
     }
 
     public User getUser() {
@@ -130,7 +130,7 @@ public class Wallet implements Serializable {
         return "Wallet{" +
             "id=" + getId() +
             ", address='" + getAddress() + "'" +
-            ", amount=" + getAmount() +
+            ", balance=" + getBalance() +
             "}";
     }
 }

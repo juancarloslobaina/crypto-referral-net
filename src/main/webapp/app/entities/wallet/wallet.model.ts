@@ -4,7 +4,7 @@ import { ICryptocurrency } from 'app/entities/cryptocurrency/cryptocurrency.mode
 export interface IWallet {
   id: number;
   address?: string | null;
-  amount?: number | null;
+  balance?: number | null;
   user?: Pick<IUser, 'id' | 'login'> | null;
   cryto?: Pick<ICryptocurrency, 'id' | 'symbol'> | null;
 }

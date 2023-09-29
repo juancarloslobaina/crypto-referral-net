@@ -9,7 +9,7 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "amount",
+      "fieldName": "balance",
       "fieldType": "BigDecimal"
     }
   ],
@@ -32,8 +32,7 @@
       "relationshipName": "cryto",
       "relationshipSide": "left",
       "relationshipType": "many-to-one",
-      "relationshipValidateRules": "required",
-      "relationshipWithBuiltInEntity": true
+      "relationshipValidateRules": "required"
     }
   ],
   "searchEngine": "no",

@@ -25,7 +25,7 @@ public class WalletCriteria implements Serializable, Criteria {
 
     private StringFilter address;
 
-    private BigDecimalFilter amount;
+    private BigDecimalFilter balance;
 
     private LongFilter userId;
 
@@ -38,7 +38,7 @@ public class WalletCriteria implements Serializable, Criteria {
     public WalletCriteria(WalletCriteria other) {
         this.id = other.id == null ? null : other.id.copy();
         this.address = other.address == null ? null : other.address.copy();
-        this.amount = other.amount == null ? null : other.amount.copy();
+        this.balance = other.balance == null ? null : other.balance.copy();
         this.userId = other.userId == null ? null : other.userId.copy();
         this.crytoId = other.crytoId == null ? null : other.crytoId.copy();
         this.distinct = other.distinct;
@@ -79,19 +79,19 @@ public class WalletCriteria implements Serializable, Criteria {
         this.address = address;
     }
 
-    public BigDecimalFilter getAmount() {
-        return amount;
+    public BigDecimalFilter getBalance() {
+        return balance;
     }
 
-    public BigDecimalFilter amount() {
-        if (amount == null) {
-            amount = new BigDecimalFilter();
+    public BigDecimalFilter balance() {
+        if (balance == null) {
+            balance = new BigDecimalFilter();
         }
-        return amount;
+        return balance;
     }
 
-    public void setAmount(BigDecimalFilter amount) {
-        this.amount = amount;
+    public void setBalance(BigDecimalFilter balance) {
+        this.balance = balance;
     }
 
     public LongFilter getUserId() {
@@ -144,7 +144,7 @@ public class WalletCriteria implements Serializable, Criteria {
         return (
             Objects.equals(id, that.id) &&
             Objects.equals(address, that.address) &&
-            Objects.equals(amount, that.amount) &&
+            Objects.equals(balance, that.balance) &&
             Objects.equals(userId, that.userId) &&
             Objects.equals(crytoId, that.crytoId) &&
             Objects.equals(distinct, that.distinct)
@@ -153,7 +153,7 @@ public class WalletCriteria implements Serializable, Criteria {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, address, amount, userId, crytoId, distinct);
+        return Objects.hash(id, address, balance, userId, crytoId, distinct);
     }
 
     // prettier-ignore
@@ -162,7 +162,7 @@ public class WalletCriteria implements Serializable, Criteria {
         return "WalletCriteria{" +
             (id != null ? "id=" + id + ", " : "") +
             (address != null ? "address=" + address + ", " : "") +
-            (amount != null ? "amount=" + amount + ", " : "") +
+            (balance != null ? "balance=" + balance + ", " : "") +
             (userId != null ? "userId=" + userId + ", " : "") +
             (crytoId != null ? "crytoId=" + crytoId + ", " : "") +
             (distinct != null ? "distinct=" + distinct + ", " : "") +

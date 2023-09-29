@@ -31,7 +31,7 @@ type TransactionFormDefaults = Pick<NewTransaction, 'id' | 'date'>;
 
 type TransactionFormGroupContent = {
   id: FormControl<TransactionFormRawValue['id'] | NewTransaction['id']>;
-  amount: FormControl<TransactionFormRawValue['amount']>;
+  balance: FormControl<TransactionFormRawValue['balance']>;
   date: FormControl<TransactionFormRawValue['date']>;
   status: FormControl<TransactionFormRawValue['status']>;
   userFrom: FormControl<TransactionFormRawValue['userFrom']>;
@@ -56,7 +56,7 @@ export class TransactionFormService {
           validators: [Validators.required],
         },
       ),
-      amount: new FormControl(transactionRawValue.amount),
+      balance: new FormControl(transactionRawValue.balance),
       date: new FormControl(transactionRawValue.date),
       status: new FormControl(transactionRawValue.status),
       userFrom: new FormControl(transactionRawValue.userFrom, {

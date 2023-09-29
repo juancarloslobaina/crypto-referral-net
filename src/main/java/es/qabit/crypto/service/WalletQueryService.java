@@ -93,8 +93,8 @@ public class WalletQueryService extends QueryService<Wallet> {
             if (criteria.getAddress() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getAddress(), Wallet_.address));
             }
-            if (criteria.getAmount() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getAmount(), Wallet_.amount));
+            if (criteria.getBalance() != null) {
+                specification = specification.and(buildRangeSpecification(criteria.getBalance(), Wallet_.balance));
             }
             if (criteria.getUserId() != null) {
                 specification =

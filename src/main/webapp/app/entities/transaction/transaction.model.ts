@@ -5,7 +5,7 @@ import { TransactionStatus } from 'app/entities/enumerations/transaction-status.
 
 export interface ITransaction {
   id: number;
-  amount?: number | null;
+  balance?: number | null;
   date?: dayjs.Dayjs | null;
   status?: keyof typeof TransactionStatus | null;
   userFrom?: Pick<IUser, 'id' | 'login'> | null;

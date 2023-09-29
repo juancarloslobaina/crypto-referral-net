@@ -1,4 +1,4 @@
-id;address;amount;user_id;cryto_id
+id;address;balance;user_id;cryto_id
 1;friendly;29456.73;1;1
 2;gadzooks between up;7736.45;2;2
 3;than victoriously boohoo;29389.04;2;3

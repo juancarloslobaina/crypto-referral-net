@@ -18,7 +18,7 @@
         "title": "Transaction"
       },
       "id": "ID",
-      "amount": "Amount",
+      "balance": "Balance",
       "date": "Date",
       "status": "Status",
       "userFrom": "User From",

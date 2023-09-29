@@ -15,7 +15,7 @@ public class TransactionDTO implements Serializable {
 
     private Long id;
 
-    private BigDecimal amount;
+    private BigDecimal balance;
 
     private Instant date;
 
@@ -35,12 +35,12 @@ public class TransactionDTO implements Serializable {
         this.id = id;
     }
 
-    public BigDecimal getAmount() {
-        return amount;
+    public BigDecimal getBalance() {
+        return balance;
     }
 
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
     }
 
     public Instant getDate() {
@@ -109,7 +109,7 @@ public class TransactionDTO implements Serializable {
     public String toString() {
         return "TransactionDTO{" +
             "id=" + getId() +
-            ", amount=" + getAmount() +
+            ", balance=" + getBalance() +
             ", date='" + getDate() + "'" +
             ", status='" + getStatus() + "'" +
             ", userFrom=" + getUserFrom() +

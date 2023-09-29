@@ -20,7 +20,7 @@ describe('Transaction Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            amount: expect.any(Object),
+            balance: expect.any(Object),
             date: expect.any(Object),
             status: expect.any(Object),
             userFrom: expect.any(Object),
@@ -36,7 +36,7 @@ describe('Transaction Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            amount: expect.any(Object),
+            balance: expect.any(Object),
             date: expect.any(Object),
             status: expect.any(Object),
             userFrom: expect.any(Object),

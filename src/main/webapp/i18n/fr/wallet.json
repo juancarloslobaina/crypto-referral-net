@@ -19,7 +19,7 @@
       },
       "id": "ID",
       "address": "Address",
-      "amount": "Amount",
+      "balance": "Balance",
       "user": "User",
       "cryto": "Cryto"
     }
