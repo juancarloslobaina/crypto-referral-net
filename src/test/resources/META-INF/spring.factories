@@ -1,0 +1,2 @@
+org.springframework.test.context.ContextCustomizerFactory = es.qabit.crypto.\
+    config.SqlTestContainersSpringContextCustomizerFactory
