@@ -1,0 +1,27 @@
+{
+  "cryptoApp": {
+    "notifications": {
+      "home": {
+        "title": "Notifications",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Notifications",
+        "createOrEditLabel": "Create or edit a Notifications",
+        "notFound": "No Notifications found"
+      },
+      "created": "A new Notifications is created with identifier {{ param }}",
+      "updated": "A Notifications is updated with identifier {{ param }}",
+      "deleted": "A Notifications is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Notifications {{ id }}?"
+      },
+      "detail": {
+        "title": "Notifications"
+      },
+      "id": "ID",
+      "date": "Date",
+      "message": "Message",
+      "status": "Status",
+      "user": "User"
+    }
+  }
+}

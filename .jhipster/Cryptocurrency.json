@@ -1,0 +1,26 @@
+{
+  "applications": "*",
+  "changelogDate": "20230929113726",
+  "dto": "mapstruct",
+  "entityTableName": "cryptocurrency",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "symbol",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "exchangeRate",
+      "fieldType": "BigDecimal"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Cryptocurrency",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

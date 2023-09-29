@@ -1,0 +1,130 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-transaction-heading" data-cy="TransactionCreateUpdateHeading" jhiTranslate="cryptoApp.transaction.home.createOrEditLabel">
+        Crear o editar Transaction
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="cryptoApp.transaction.amount" for="field_amount">Amount</label>
+          <input type="number" class="form-control" name="amount" id="field_amount" data-cy="amount" formControlName="amount" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="cryptoApp.transaction.date" for="field_date">Date</label>
+          <div class="d-flex">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="datetime-local"
+              class="form-control"
+              name="date"
+              formControlName="date"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="cryptoApp.transaction.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'cryptoApp.TransactionStatus.null' | translate }}</option>
+            <option *ngFor="let transactionStatus of transactionStatusValues" [value]="transactionStatus">
+              {{ 'cryptoApp.TransactionStatus.' + transactionStatus | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="cryptoApp.transaction.userFrom" for="field_userFrom">User From</label>
+          <select
+            class="form-control"
+            id="field_userFrom"
+            data-cy="userFrom"
+            name="userFrom"
+            formControlName="userFrom"
+            [compareWith]="compareUser"
+          >
+            <option *ngIf="!editForm.get('userFrom')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.login }}</option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['userFrom'])!.invalid && (editForm.get(['userFrom'])!.dirty || editForm.get(['userFrom'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['userFrom'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            Este campo es obligatorio.
+          </small>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="cryptoApp.transaction.userTo" for="field_userTo">User To</label>
+          <select
+            class="form-control"
+            id="field_userTo"
+            data-cy="userTo"
+            name="userTo"
+            formControlName="userTo"
+            [compareWith]="compareUser"
+          >
+            <option *ngIf="!editForm.get('userTo')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.login }}</option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['userTo'])!.invalid && (editForm.get(['userTo'])!.dirty || editForm.get(['userTo'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['userTo'])?.errors?.required" jhiTranslate="entity.validation.required">
+            Este campo es obligatorio.
+          </small>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="cryptoApp.transaction.crypto" for="field_crypto">Crypto</label>
+          <select
+            class="form-control"
+            id="field_crypto"
+            data-cy="crypto"
+            name="crypto"
+            formControlName="crypto"
+            [compareWith]="compareCryptocurrency"
+          >
+            <option *ngIf="!editForm.get('crypto')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="cryptocurrencyOption" *ngFor="let cryptocurrencyOption of cryptocurrenciesSharedCollection">
+              {{ cryptocurrencyOption.symbol }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['crypto'])!.invalid && (editForm.get(['crypto'])!.dirty || editForm.get(['crypto'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['crypto'])?.errors?.required" jhiTranslate="entity.validation.required">
+            Este campo es obligatorio.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

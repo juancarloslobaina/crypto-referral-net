@@ -48,6 +48,10 @@ public class CacheConfiguration {
             createCache(cm, es.qabit.crypto.domain.User.class.getName());
             createCache(cm, es.qabit.crypto.domain.Authority.class.getName());
             createCache(cm, es.qabit.crypto.domain.User.class.getName() + ".authorities");
+            createCache(cm, es.qabit.crypto.domain.Cryptocurrency.class.getName());
+            createCache(cm, es.qabit.crypto.domain.Notifications.class.getName());
+            createCache(cm, es.qabit.crypto.domain.Transaction.class.getName());
+            createCache(cm, es.qabit.crypto.domain.Wallet.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

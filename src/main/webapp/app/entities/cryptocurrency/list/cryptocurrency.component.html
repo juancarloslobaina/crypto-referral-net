@@ -1,0 +1,122 @@
+<div>
+  <h2 id="page-heading" data-cy="CryptocurrencyHeading">
+    <span jhiTranslate="cryptoApp.cryptocurrency.home.title">Cryptocurrencies</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="cryptoApp.cryptocurrency.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-cryptocurrency"
+        [routerLink]="['/cryptocurrency/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="cryptoApp.cryptocurrency.home.createLabel"> Crear nuevo Cryptocurrency </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <jhi-filter [filters]="filters"></jhi-filter>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="cryptocurrencies?.length === 0">
+    <span jhiTranslate="cryptoApp.cryptocurrency.home.notFound">Ningún Cryptocurrencies encontrado</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="cryptocurrencies && cryptocurrencies.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="name">
+            <div class="d-flex">
+              <span jhiTranslate="cryptoApp.cryptocurrency.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="symbol">
+            <div class="d-flex">
+              <span jhiTranslate="cryptoApp.cryptocurrency.symbol">Symbol</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="exchangeRate">
+            <div class="d-flex">
+              <span jhiTranslate="cryptoApp.cryptocurrency.exchangeRate">Exchange Rate</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cryptocurrency of cryptocurrencies; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/cryptocurrency', cryptocurrency.id, 'view']">{{ cryptocurrency.id }}</a>
+          </td>
+          <td>{{ cryptocurrency.name }}</td>
+          <td>{{ cryptocurrency.symbol }}</td>
+          <td>{{ cryptocurrency.exchangeRate }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/cryptocurrency', cryptocurrency.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/cryptocurrency', cryptocurrency.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+              </button>
+
+              <button type="submit" (click)="delete(cryptocurrency)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="cryptocurrencies && cryptocurrencies.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

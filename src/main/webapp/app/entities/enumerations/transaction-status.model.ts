@@ -1,0 +1,11 @@
+export enum TransactionStatus {
+  PENDIENTE = 'PENDIENTE',
+
+  APROBADA = 'APROBADA',
+
+  RECHAZADA = 'RECHAZADA',
+
+  CANCELADA = 'CANCELADA',
+
+  COMPLETADA = 'COMPLETADA',
+}

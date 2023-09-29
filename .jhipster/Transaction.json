@@ -1,0 +1,54 @@
+{
+  "applications": "*",
+  "changelogDate": "20230929113926",
+  "dto": "mapstruct",
+  "entityTableName": "transaction",
+  "fields": [
+    {
+      "fieldName": "amount",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "TransactionStatus",
+      "fieldValues": "PENDIENTE,APROBADA,RECHAZADA,CANCELADA,COMPLETADA"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Transaction",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "relationshipName": "userFrom",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required",
+      "relationshipWithBuiltInEntity": true
+    },
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "relationshipName": "userTo",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required",
+      "relationshipWithBuiltInEntity": true
+    },
+    {
+      "otherEntityField": "symbol",
+      "otherEntityName": "cryptocurrency",
+      "relationshipName": "crypto",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="notifications">
+      <h2 data-cy="notificationsDetailsHeading"><span jhiTranslate="cryptoApp.notifications.detail.title">Notifications</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ notifications.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="cryptoApp.notifications.date">Date</span></dt>
+        <dd>
+          <span>{{ notifications.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="cryptoApp.notifications.message">Message</span></dt>
+        <dd>
+          <span>{{ notifications.message }}</span>
+        </dd>
+        <dt><span jhiTranslate="cryptoApp.notifications.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'cryptoApp.NotificationStatus.' + notifications.status }}">{{ notifications.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="cryptoApp.notifications.user">User</span></dt>
+        <dd>
+          <span>{{ notifications.user?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/notifications', notifications.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

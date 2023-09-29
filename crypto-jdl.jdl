@@ -1,0 +1,51 @@
+entity Cryptocurrency{
+	name String
+    symbol String
+    exchangeRate BigDecimal    
+}
+
+entity Transaction {
+    balance BigDecimal 
+    date Instant
+    status TransactionStatus
+}
+
+enum TransactionStatus {
+    PENDIENTE,
+    APROBADA,
+    RECHAZADA,
+    CANCELADA,
+    COMPLETADA
+}
+
+entity Wallet{	
+    address String
+    balance BigDecimal    
+}
+
+entity Notifications{
+	date Instant
+    message String
+    status NotificationStatus
+}
+
+enum NotificationStatus {
+    TRANSACCIONEXITOSA,
+    TRANSACCIONFALLIDA,
+    SOLICITUDAMIGO,
+    AVISOIMPORTANTE,
+    ACTUALIZACIONCUENTA,
+    PROMOCIONESPECIAL
+}
+
+relationship ManyToOne {
+    Transaction{userFrom(login) required} to User with builtInEntity
+    Transaction{userTo(login) required} to User with builtInEntity
+    Transaction{crypto(symbol) required} to Cryptocurrency
+    Notifications{user(login) required} to User with builtInEntity
+    Wallet{user(login) required} to User with builtInEntity
+    Wallet{cryto(symbol) required} to Cryptocurrency
+}
+
+filter Transaction, Wallet, Cryptocurrency, Notifications
+use mapstruct, serviceImpl, pagination for *

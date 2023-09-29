@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity Transaction.
+    -->
+    <changeSet id="20230929113926-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="user_from_id"
+                                 baseTableName="transaction"
+                                 constraintName="fk_transaction__user_from_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="user_to_id"
+                                 baseTableName="transaction"
+                                 constraintName="fk_transaction__user_to_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="crypto_id"
+                                 baseTableName="transaction"
+                                 constraintName="fk_transaction__crypto_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cryptocurrency"
+                                 />
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,26 @@
+{
+  "cryptoApp": {
+    "cryptocurrency": {
+      "home": {
+        "title": "Cryptocurrencies",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Cryptocurrency",
+        "createOrEditLabel": "Create or edit a Cryptocurrency",
+        "notFound": "No Cryptocurrencies found"
+      },
+      "created": "A new Cryptocurrency is created with identifier {{ param }}",
+      "updated": "A Cryptocurrency is updated with identifier {{ param }}",
+      "deleted": "A Cryptocurrency is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Cryptocurrency {{ id }}?"
+      },
+      "detail": {
+        "title": "Cryptocurrency"
+      },
+      "id": "ID",
+      "name": "Name",
+      "symbol": "Symbol",
+      "exchangeRate": "Exchange Rate"
+    }
+  }
+}

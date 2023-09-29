@@ -1,0 +1,27 @@
+{
+  "cryptoApp": {
+    "wallet": {
+      "home": {
+        "title": "Wallets",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Wallet",
+        "createOrEditLabel": "Crear o editar Wallet",
+        "notFound": "Ningún Wallets encontrado"
+      },
+      "created": "Un nuevo Wallet ha sido creado con el identificador {{ param }}",
+      "updated": "Un Wallet ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Wallet ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Wallet {{ id }}?"
+      },
+      "detail": {
+        "title": "Wallet"
+      },
+      "id": "ID",
+      "address": "Address",
+      "amount": "Amount",
+      "user": "User",
+      "cryto": "Cryto"
+    }
+  }
+}
